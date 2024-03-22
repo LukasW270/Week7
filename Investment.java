@@ -1,8 +1,13 @@
 import java.util.*;
 import java.lang.Math;
+import java.text.NumberFormat;
 
 public class Investment {
     public static void main(String[] args){
+
+    NumberFormat money = NumberFormat.getCurrencyInstance();
+    NumberFormat decimal = NumberFormat.getNumberInstance();
+    NumberFormat number = NumberFormat.getIntegerInstance();
 
     double initial;
     double total;
@@ -28,7 +33,7 @@ public class Investment {
 
     years = ((Math.log(total/initial)/(Math.log(1 + (rate/timesCompounded))))) * (1/timesCompounded);
 
-    System.out.println("Your initial investment of " + initial + " will take " + years + " to be worth at least " + total + " if compounded " + timesCompounded + " per year at " + rate + " .");
+    System.out.println("Your initial investment of " + money.format(initial) + " will take " + decimal.format(years) + " years to be worth at least " + money.format(total) + " if compounded " + number.format(timesCompounded) + " time per year at " + rate*100 + "%.");
 
     }
 }
